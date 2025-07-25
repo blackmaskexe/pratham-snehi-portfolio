@@ -1,6 +1,7 @@
 "use client";
 import HeroSection from "@/components/hero/HeroSection";
 import NavbarSection from "@/components/navbar/NavbarSection";
+import ProjectsSection from "@/components/projects/ProjectsSection";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       {/* Anything after this navbar ending, and before this div will make the navbar resize after scrolling */}
       <NavbarSection />
       <HeroSection />
+      <ProjectsSection />
     </div>
   );
 }
