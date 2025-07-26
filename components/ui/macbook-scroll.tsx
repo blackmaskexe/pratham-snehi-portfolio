@@ -24,14 +24,13 @@ import { IconCommand } from "@tabler/icons-react";
 import { IconCaretLeftFilled } from "@tabler/icons-react";
 import { IconCaretDownFilled } from "@tabler/icons-react";
 
-
 export const MacbookScroll = ({
-  src,
+  component,
   showGradient,
   title,
   badge,
 }: {
-  src?: string;
+  component?: React.ReactNode;
   showGradient?: boolean;
   title?: string | React.ReactNode;
   badge?: React.ReactNode;
@@ -53,12 +52,12 @@ export const MacbookScroll = ({
   const scaleX = useTransform(
     scrollYProgress,
     [0, 0.3],
-    [1.2, isMobile ? 1 : 1.5],
+    [1.2, isMobile ? 0.8 : 1.0]
   );
   const scaleY = useTransform(
     scrollYProgress,
     [0, 0.3],
-    [0.6, isMobile ? 1 : 1.5],
+    [0.6, isMobile ? 0.8 : 1.0]
   );
   const translate = useTransform(scrollYProgress, [0, 1], [0, 1500]);
   const rotate = useTransform(scrollYProgress, [0.1, 0.12, 0.3], [-28, -28, 0]);
@@ -85,14 +84,14 @@ export const MacbookScroll = ({
       </motion.h2>
       {/* Lid */}
       <Lid
-        src={src}
+        component={component}
         scaleX={scaleX}
         scaleY={scaleY}
         rotate={rotate}
         translate={translate}
       />
       {/* Base area */}
-      <div className="relative -z-10 h-[22rem] w-[32rem] overflow-hidden rounded-2xl bg-gray-200 dark:bg-[#272729]">
+      <div className="relative -z-10 h-[28rem] w-[64rem] overflow-hidden rounded-2xl bg-gray-200 dark:bg-[#272729]">
         {/* above keyboard bar */}
         <div className="relative h-10 w-full">
           <div className="absolute inset-x-0 mx-auto h-4 w-[80%] bg-[#050505]" />
@@ -124,13 +123,13 @@ export const Lid = ({
   scaleY,
   rotate,
   translate,
-  src,
+  component,
 }: {
   scaleX: MotionValue<number>;
   scaleY: MotionValue<number>;
   rotate: MotionValue<number>;
   translate: MotionValue<number>;
-  src?: string;
+  component?: React.ReactNode;
 }) => {
   return (
     <div className="relative [perspective:800px]">
@@ -162,14 +161,14 @@ export const Lid = ({
           transformStyle: "preserve-3d",
           transformOrigin: "top",
         }}
-        className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-[#010101] p-2"
+        className="absolute inset-0 h-[48rem] w-[80vw] max-w-[64rem] rounded-2xl bg-[#010101] p-2 left-1/2 transform -translate-x-1/2"
       >
         <div className="absolute inset-0 rounded-lg bg-[#272729]" />
-        <img
-          src={src as string}
-          alt="aceternity logo"
-          className="absolute inset-0 h-full w-full rounded-lg object-cover object-left-top"
-        />
+        <div className="absolute inset-2 h-[calc(100%-1rem)] w-[calc(100%-1rem)] rounded-lg overflow-hidden">
+          <div className="h-full w-full transform scale-[0.9] origin-top-left">
+            {component}
+          </div>
+        </div>
       </motion.div>
     </div>
   );
@@ -559,13 +558,13 @@ export const KBtn = ({
     <div
       className={cn(
         "[transform:translateZ(0)] rounded-[4px] p-[0.5px] [will-change:transform]",
-        backlit && "bg-white/[0.2] shadow-xl shadow-white",
+        backlit && "bg-white/[0.2] shadow-xl shadow-white"
       )}
     >
       <div
         className={cn(
           "flex h-6 w-6 items-center justify-center rounded-[3.5px] bg-[#0A090D]",
-          className,
+          className
         )}
         style={{
           boxShadow:
@@ -576,7 +575,7 @@ export const KBtn = ({
           className={cn(
             "flex w-full flex-col items-center justify-center text-[5px] text-neutral-200",
             childrenClassName,
-            backlit && "text-white",
+            backlit && "text-white"
           )}
         >
           {children}

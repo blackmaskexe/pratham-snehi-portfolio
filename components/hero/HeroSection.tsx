@@ -1,12 +1,12 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { HeroHighlight } from "../ui/hero-highlight";
 
 export default function HeroSection() {
   return (
     <div className="px-4 py-10 md:py-20">
-      <h1 className="relative z-10 mx-auto max-w-4xl text-center text-4xl font-bold text-slate-700 md:text-6xl lg:text-8xl dark:text-slate-300 mt-15 pt-15">
+      <h1 className="relative z-10 mx-auto max-w-4xl text-center text-6xl font-bold text-slate-700 md:text-7xl lg:text-9xl dark:text-slate-300 mt-16 pt-16">
         {"Pratham Snehi".split(" ").map((word, index) => (
           <motion.span
             key={index}

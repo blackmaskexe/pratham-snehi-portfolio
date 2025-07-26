@@ -9,6 +9,7 @@ export default function Home() {
       {/* Anything after this navbar ending, and before this div will make the navbar resize after scrolling */}
       <NavbarSection />
       <HeroSection />
+
       <ProjectsSection />
     </div>
   );
