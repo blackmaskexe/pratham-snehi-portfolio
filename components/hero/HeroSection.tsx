@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { HeroHighlight } from "../ui/hero-highlight";
 
 export default function HeroSection() {
   return (
@@ -36,9 +35,9 @@ export default function HeroSection() {
         }}
         className="relative z-10 mx-auto max-w-xl py-4 text-center text-xl font-normal text-neutral-600 dark:text-neutral-400"
       >
-        With AI, you can launch your website in hours, not days. Try our best in
-        class, state of the art, cutting edge AI tools to get your website up.
+        Fullstack developer building beautiful React Native mobile apps with AI,
+        custom APIs, and cloud. AWS & Microsoft certified.
       </motion.p>
     </div>
   );
-}
+
