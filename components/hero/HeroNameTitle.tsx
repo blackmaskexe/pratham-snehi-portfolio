@@ -8,23 +8,11 @@ export default function HeroNameTitle() {
   const textControls = useAnimation();
 
   useEffect(() => {
-    const prefersReduced =
-      typeof window !== "undefined" &&
-      window.matchMedia &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
     // detect mobile (Tailwind 'sm' breakpoint)
     const isMobile =
       typeof window !== "undefined" &&
       window.matchMedia &&
       window.matchMedia("(max-width: 640px)").matches;
-
-    if (prefersReduced) {
-      // Skip fancy motion for reduced-motion users
-      logoControls.set({ x: 0, opacity: 1 });
-      textControls.set({ x: 0 });
-      return;
-    }
 
     let mounted = true;
 
@@ -70,12 +58,14 @@ export default function HeroNameTitle() {
     };
   }, [logoControls, textControls]);
 
+  // Logo sizing handled with responsive Tailwind classes; no JS measurement required.
+
   return (
-    <div className="relative z-10 mx-auto max-w-4xl text-center mt-16 pt-16 mb-8">
+    <div className="relative z-10 mx-auto max-w-6xl text-center mt-16 pt-16 mb-8">
       {/* Keep animations intact. Layout: side-by-side with smaller mobile gap so elements feel closer. */}
-      <div className="flex items-center justify-center sm:gap-4">
+      <div className="flex items-center justify-center sm:gap-4 md:gap-6">
         {/* Logo container — allow overflow so the animated entrance isn't clipped */}
-        <div className="relative w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 flex-shrink-0 rounded-full overflow-visible">
+        <div className="relative w-20 sm:w-20 md:w-28 lg:w-32 h-20 sm:h-20 md:h-28 lg:h-32 flex-shrink-0 rounded-full overflow-visible">
           <motion.img
             src="/avataaars.png"
             alt="logo"
@@ -88,11 +78,12 @@ export default function HeroNameTitle() {
 
         {/* Name text - will be pushed and then settle */}
         <motion.h1
-          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-slate-700 dark:text-slate-300"
+          className="leading-tight text-4xl sm:text-5xl md:text-8xl lg:text-9xl font-bold text-slate-700 dark:text-slate-300 text-left sm:text-center"
           initial={{ x: 0 }}
           animate={textControls}
         >
-          Pratham Snehi
+          <span className="block sm:inline">Pratham</span>
+          <span className="block sm:inline sm:ml-4">Snehi</span>
         </motion.h1>
       </div>
     </div>

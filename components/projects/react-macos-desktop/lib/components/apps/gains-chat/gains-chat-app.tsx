@@ -15,7 +15,15 @@ import { GraphsTab } from "./graphs-tab";
 import { LogWorkoutsChat } from "./log-workouts-chat";
 import { ExerciseGraph } from "./exercise-graph";
 
-export function GainsChatApp() {
+interface GainsChatAppProps {
+  containerWidth?: number;
+  containerHeight?: number;
+}
+
+export function GainsChatApp({
+  containerWidth,
+  containerHeight,
+}: GainsChatAppProps) {
   const [currentTime] = useState("6:03");
   const [activeTab, setActiveTab] = useState<"home" | "graphs" | "log">("home");
   const [activeExercise, setActiveExercise] = useState<null | {
@@ -108,8 +116,15 @@ export function GainsChatApp() {
     mainContent = <LogWorkoutsChat />;
   }
 
+  const style: React.CSSProperties = {};
+  if (containerWidth) style.width = containerWidth;
+  if (containerHeight) style.height = containerHeight;
+
   return (
-    <div className="w-full h-full bg-gray-50 text-gray-900 relative font-sans">
+    <div
+      className="w-full h-full bg-gray-50 text-gray-900 relative font-sans"
+      style={style}
+    >
       {/* Status Bar & Notch */}
       <div className="relative top-0 left-0 right-0 z-20 px-6 pt-4 pb-2 flex justify-between items-center">
         <span className="text-sm font-semibold">{currentTime}</span>

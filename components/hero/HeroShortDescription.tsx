@@ -87,7 +87,7 @@ export default function HeroShortDescription() {
 
   return (
     <motion.p
-      className="relative z-10 mx-auto max-w-xl py-4 text-center text-xl font-normal text-neutral-600 dark:text-neutral-400"
+      className="relative z-10 mx-auto max-w-xl py-4 text-center text-xl md:text-2xl font-normal text-neutral-600 dark:text-neutral-400"
       initial={{ opacity: 0, y: 10 }}
       animate={subtitleControls}
       style={{ opacity: 0 }}

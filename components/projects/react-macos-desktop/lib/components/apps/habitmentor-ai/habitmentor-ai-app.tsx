@@ -6,14 +6,26 @@ import { IoHomeOutline, IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import { HabitHome } from "./habit-home";
 import { HabitAIChat } from "./habit-ai-chat";
 
-export function HabitMentorAIApp() {
+interface HabitMentorAIAppProps {
+  containerWidth?: number;
+  containerHeight?: number;
+}
+
+export function HabitMentorAIApp({
+  containerWidth,
+  containerHeight,
+}: HabitMentorAIAppProps) {
   const [currentTime] = useState("2:37");
   const [activeTab, setActiveTab] = useState<"home" | "ai">("home");
+
+  const style: React.CSSProperties = {};
+  if (containerWidth) style.width = containerWidth;
+  if (containerHeight) style.height = containerHeight;
 
   return (
     <div
       className="flex flex-col h-full w-full text-white relative overflow-hidden"
-      style={{ background: "#151515" }}
+      style={{ ...style, background: "#151515" }}
     >
       {/* Status Bar */}
       <div className="relative flex justify-between items-center px-6 pt-3 pb-2 text-white text-sm font-medium">
