@@ -70,7 +70,14 @@ export default function HeroShortDescription() {
     }
 
     // small delay before starting everything so subtitle feels connected
-    const startTimer = setTimeout(run, 800);
+    const startTimer = setTimeout(async () => {
+      await run();
+      // dispatch an event so other components can sequence after subtitle
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new CustomEvent("hero:subtitle:done"));
+      }
+    }, 800);
+
     return () => {
       mounted = false;
       clearTimeout(startTimer);
