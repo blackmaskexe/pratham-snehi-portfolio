@@ -28,7 +28,7 @@ interface NavItemsProps {
     link: string;
   }[];
   className?: string;
-  onItemClick?: () => void;
+  onItemClick?: (link: string) => void;
 }
 
 interface MobileNavProps {
@@ -125,12 +125,14 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
       )}
     >
       {items.map((item, idx) => (
-        <a
+        <button
           onMouseEnter={() => setHovered(idx)}
-          onClick={onItemClick}
-          className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
+          onClick={(e) => {
+            e.preventDefault();
+            onItemClick?.(item.link);
+          }}
+          className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300 bg-transparent border-none cursor-pointer"
           key={`link-${idx}`}
-          href={item.link}
         >
           {hovered === idx && (
             <motion.div
@@ -139,7 +141,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
             />
           )}
           <span className="relative z-20">{item.name}</span>
-        </a>
+        </button>
       ))}
     </motion.div>
   );
@@ -231,19 +233,27 @@ export const MobileNavToggle = ({
 };
 
 export const NavbarLogo = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
-    <a
-      href="#"
-      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
+    <button
+      onClick={scrollToTop}
+      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black bg-transparent border-none cursor-pointer"
     >
       <img
-        src="https://assets.aceternity.com/logo-dark.png"
-        alt="logo"
+        src="/avataaars.png"
+        alt="Pratham Snehi"
         width={30}
         height={30}
+        className="rounded-full"
       />
-      <span className="font-medium text-black dark:text-white">Startup</span>
-    </a>
+      <span className="font-medium text-black dark:text-white">Pratham Snehi</span>
+    </button>
   );
 };
 

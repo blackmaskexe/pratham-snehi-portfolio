@@ -7,8 +7,15 @@ import { motion, useAnimation } from "framer-motion";
 export default function HeroCTAButtons() {
   const controls = useAnimation();
   const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 80; // Account for navbar height
+      const elementPosition = element.offsetTop - offset;
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
+    }
   };
 
   useEffect(() => {
