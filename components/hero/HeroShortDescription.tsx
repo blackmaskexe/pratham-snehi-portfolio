@@ -100,15 +100,15 @@ export default function HeroShortDescription() {
       style={{ opacity: 0 }}
     >
       <motion.span
-        className="inline-block px-0.5 sm:px-1 rounded-sm"
+        className="inline-block px-0.5 sm:px-1 rounded-sm font-semibold"
         animate={fullstackControl}
         style={{ backgroundColor: "transparent" }}
       >
         Fullstack developer
       </motion.span>{" "}
-      building beautiful{" "}
+      building <strong>beautiful</strong>{" "}
       <motion.span
-        className="inline-block px-0.5 sm:px-1 rounded-sm"
+        className="inline-block px-0.5 sm:px-1 rounded-sm font-semibold"
         animate={rnControl}
         style={{ backgroundColor: "transparent" }}
       >
@@ -116,7 +116,7 @@ export default function HeroShortDescription() {
       </motion.span>{" "}
       mobile apps with{" "}
       <motion.span
-        className="inline-block px-0.5 sm:px-1 rounded-sm"
+        className="inline-block px-0.5 sm:px-1 rounded-sm font-semibold"
         animate={aiControl}
         style={{ backgroundColor: "transparent" }}
       >
@@ -124,7 +124,7 @@ export default function HeroShortDescription() {
       </motion.span>
       , custom{" "}
       <motion.span
-        className="inline-block px-0.5 sm:px-1 rounded-sm"
+        className="inline-block px-0.5 sm:px-1 rounded-sm font-semibold"
         animate={apisControl}
         style={{ backgroundColor: "transparent" }}
       >
@@ -132,7 +132,7 @@ export default function HeroShortDescription() {
       </motion.span>
       , and{" "}
       <motion.span
-        className="inline-block px-0.5 sm:px-1 rounded-sm"
+        className="inline-block px-0.5 sm:px-1 rounded-sm font-semibold"
         animate={cloudControl}
         style={{ backgroundColor: "transparent" }}
       >

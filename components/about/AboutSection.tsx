@@ -45,12 +45,14 @@ export default function AboutSection() {
     {
       icon: Smartphone,
       title: "Mobile-First",
-      description: "Creating beautiful, responsive experiences across all devices",
+      description:
+        "Creating beautiful, responsive experiences across all devices",
     },
     {
       icon: Brain,
       title: "AI Integration",
-      description: "Leveraging AI to create intelligent, user-centric applications",
+      description:
+        "Leveraging AI to create intelligent, user-centric applications",
     },
     {
       icon: Cloud,
@@ -60,7 +62,10 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
+    <section
+      id="about"
+      className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800"
+    >
       <div className="container mx-auto px-4 max-w-6xl">
         <motion.div
           ref={ref}
@@ -93,35 +98,76 @@ export default function AboutSection() {
               variants={itemVariants}
               className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed"
             >
-              I'm a passionate <strong className="text-gray-900 dark:text-white">full-stack developer</strong> who believes technology should solve <strong className="text-gray-900 dark:text-white">real problems</strong>
-              and create <strong className="text-gray-900 dark:text-white">meaningful experiences</strong>. My journey in software development is driven by an
-              insatiable curiosity and a love for building things that matter.
+              I'm a passionate{" "}
+              <strong className="text-gray-900 dark:text-white">
+                full-stack developer
+              </strong>{" "}
+              who believes technology should solve{" "}
+              <strong className="text-gray-900 dark:text-white">
+                real problems
+              </strong>{" "}
+              and create{" "}
+              <strong className="text-gray-900 dark:text-white">
+                meaningful experiences
+              </strong>
+              . My journey in software development is driven by an insatiable
+              curiosity and a love for building things that matter.
             </motion.p>
 
             <motion.p
               variants={itemVariants}
               className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed"
             >
-              With expertise spanning from <strong className="text-gray-900 dark:text-white">React Native mobile applications</strong> to <strong className="text-gray-900 dark:text-white">cloud-native
-              architectures</strong>, I specialize in creating <strong className="text-gray-900 dark:text-white">seamless digital experiences</strong>. I'm particularly
-              excited about integrating <strong className="text-gray-900 dark:text-white">AI</strong> into everyday applications to make them more intelligent
-              and user-friendly.
+              With expertise spanning from{" "}
+              <strong className="text-gray-900 dark:text-white">
+                React Native mobile applications
+              </strong>{" "}
+              to{" "}
+              <strong className="text-gray-900 dark:text-white">
+                cloud-native architectures
+              </strong>
+              , I specialize in creating{" "}
+              <strong className="text-gray-900 dark:text-white">
+                seamless digital experiences
+              </strong>
+              . I'm particularly excited about integrating{" "}
+              <strong className="text-gray-900 dark:text-white">AI</strong> into
+              everyday applications to make them more intelligent and
+              user-friendly.
             </motion.p>
 
             <motion.p
               variants={itemVariants}
               className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed"
             >
-              When I'm not coding, you'll find me exploring the latest in <strong className="text-gray-900 dark:text-white">tech trends</strong>, contributing
-              to <strong className="text-gray-900 dark:text-white">open source projects</strong>, or <strong className="text-gray-900 dark:text-white">mentoring fellow developers</strong>. I'm always eager to collaborate
-              on projects that push the boundaries of what's possible.
+              When I'm not coding, you'll find me exploring the latest in{" "}
+              <strong className="text-gray-900 dark:text-white">
+                tech trends
+              </strong>
+              , contributing to{" "}
+              <strong className="text-gray-900 dark:text-white">
+                open source projects
+              </strong>
+              , or{" "}
+              <strong className="text-gray-900 dark:text-white">
+                mentoring fellow developers
+              </strong>
+              . I'm always eager to collaborate on projects that push the
+              boundaries of what's possible.
             </motion.p>
 
             <motion.div
               variants={itemVariants}
               className="flex flex-wrap gap-3 pt-4"
             >
-              {["React", "TypeScript", "Node.js", "React Native", "AWS", "AI/ML"].map((tech) => (
+              {[
+                "React",
+                "TypeScript",
+                "Node.js",
+                "React Native",
+                "AWS",
+                "AI/ML",
+              ].map((tech) => (
                 <span
                   key={tech}
                   className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium"
