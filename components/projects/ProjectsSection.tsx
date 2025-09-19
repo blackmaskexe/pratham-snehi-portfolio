@@ -62,7 +62,7 @@ const ProjectsSection = forwardRef<
             {isMobile ? (
               <MobilePhoneSimulation className="max-w-sm mx-auto" />
             ) : (
-              <div className="relative z-[99] h-[70vh] w-full max-w-5xl">
+              <div className="relative z-[99] h-[90vh] w-full max-w-5xl">
                 <MacbookFrame>
                   <MacosDesktop />
                 </MacbookFrame>

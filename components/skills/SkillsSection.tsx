@@ -150,6 +150,15 @@ export default function SkillsSection() {
         { name: "Natural Language Processing", icon: Cpu },
       ],
     },
+    certifications: {
+      title: "Certifications",
+      icon: Database,
+      color: "indigo",
+      skills: [
+        { name: "Microsoft GitHub Foundations", icon: SiGithub },
+        { name: "AWS Cloud Practitioner", icon: SiAmazon },
+      ],
+    },
   };
 
   const SkillBubble = ({ skill, index }: { skill: { name: string; icon: any }, index: number }) => {
@@ -212,6 +221,7 @@ export default function SkillsSection() {
       purple: "bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300",
       orange: "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300",
       pink: "bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300",
+      indigo: "bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300",
     };
     return colors[color as keyof typeof colors] || colors.blue;
   };
@@ -223,6 +233,7 @@ export default function SkillsSection() {
       purple: "bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/40 dark:to-purple-800/40",
       orange: "bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-900/40 dark:to-orange-800/40",
       pink: "bg-gradient-to-br from-pink-100 to-pink-200 dark:from-pink-900/40 dark:to-pink-800/40",
+      indigo: "bg-gradient-to-br from-indigo-100 to-indigo-200 dark:from-indigo-900/40 dark:to-indigo-800/40",
     };
     return colors[color as keyof typeof colors] || colors.blue;
   };
@@ -255,100 +266,68 @@ export default function SkillsSection() {
           </motion.p>
         </motion.div>
 
-        <div className="space-y-8">
-          {/* Category Selector */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={controls}
-            className="flex flex-wrap justify-center gap-4"
-          >
-            {Object.entries(skillCategories).map(([key, category]) => {
-              const Icon = category.icon;
-              const isActive = activeCategory === key;
-
-              return (
-                <motion.button
-                  key={key}
-                  variants={itemVariants}
-                  onClick={() => setActiveCategory(key)}
-                  className={`flex items-center space-x-3 px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-md ${getBgColorClasses(category.color, isActive)}`}
-                >
-                  <Icon className="w-5 h-5" />
-                  <span className="font-medium">{category.title}</span>
-                </motion.button>
-              );
-            })}
-          </motion.div>
-
-          {/* Skills Display */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={controls}
-            className="w-full"
-          >
+        <div className="flex justify-center">
+          <div className="grid lg:grid-cols-5 gap-8 max-w-5xl w-full">
+            {/* Category Selector - Left Sidebar */}
             <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-8 rounded-2xl border border-gray-200 dark:border-gray-700"
+              variants={containerVariants}
+              initial="hidden"
+              animate={controls}
+              className="lg:col-span-2"
             >
-              <div className="flex items-center justify-center space-x-3 mb-8">
-                {(() => {
-                  const Icon = skillCategories[activeCategory as keyof typeof skillCategories].icon;
-                  return <Icon className="w-8 h-8 text-blue-600 dark:text-blue-400" />;
-                })()}
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white text-center">
-                  {skillCategories[activeCategory as keyof typeof skillCategories].title}
-                </h3>
-              </div>
+              <div className="space-y-3">
+                {Object.entries(skillCategories).map(([key, category]) => {
+                  const Icon = category.icon;
+                  const isActive = activeCategory === key;
 
-              <div className="flex flex-wrap justify-center gap-4">
-                {skillCategories[activeCategory as keyof typeof skillCategories].skills.map((skill, index) => (
-                  <SkillBubble key={skill.name} skill={skill} index={index} />
-                ))}
+                  return (
+                    <motion.button
+                      key={key}
+                      variants={itemVariants}
+                      onClick={() => setActiveCategory(key)}
+                      className={`w-full flex items-center space-x-3 p-4 rounded-xl transition-all duration-300 text-left hover:shadow-md ${getBgColorClasses(category.color, isActive)}`}
+                    >
+                      <Icon className="w-6 h-6" />
+                      <span className="font-medium">{category.title}</span>
+                    </motion.button>
+                  );
+                })}
               </div>
             </motion.div>
-          </motion.div>
-        </div>
 
-        {/* Certifications */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={controls}
-          className="mt-16"
-        >
-          <motion.h3
-            variants={itemVariants}
-            className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8"
-          >
-            Certifications
-          </motion.h3>
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap justify-center gap-6"
-          >
-            {[
-              { name: "AWS Certified", icon: "☁️" },
-              { name: "Microsoft Certified", icon: "🚀" },
-              { name: "React Native", icon: "📱" },
-              { name: "Full-Stack Development", icon: "💻" },
-            ].map((cert) => (
-              <div
-                key={cert.name}
-                className="flex items-center space-x-2 bg-white dark:bg-gray-800 px-4 py-2 rounded-full shadow-md border border-gray-200 dark:border-gray-700"
+            {/* Skills Display - Right Side */}
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate={controls}
+              className="lg:col-span-3"
+            >
+              <motion.div
+                key={activeCategory}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3 }}
+                className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 h-full flex flex-col"
               >
-                <span className="text-xl">{cert.icon}</span>
-                <span className="font-medium text-gray-700 dark:text-gray-300">
-                  {cert.name}
-                </span>
-              </div>
-            ))}
-          </motion.div>
-        </motion.div>
+                <div className="flex items-center space-x-3 mb-6">
+                  {(() => {
+                    const Icon = skillCategories[activeCategory as keyof typeof skillCategories].icon;
+                    return <Icon className="w-8 h-8 text-blue-600 dark:text-blue-400" />;
+                  })()}
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                    {skillCategories[activeCategory as keyof typeof skillCategories].title}
+                  </h3>
+                </div>
+
+                <div className="flex flex-wrap gap-3 content-start flex-1">
+                  {skillCategories[activeCategory as keyof typeof skillCategories].skills.map((skill, index) => (
+                    <SkillBubble key={skill.name} skill={skill} index={index} />
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
