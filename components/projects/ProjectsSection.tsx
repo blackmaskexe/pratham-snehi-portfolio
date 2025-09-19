@@ -71,53 +71,75 @@ const ProjectsSection = forwardRef<
           </div>
 
           {/* Project Info Cards */}
-          <div className="mt-16 grid md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Gains Chat",
-                description: "<strong>AI-powered fitness coaching platform</strong> with <strong>personalized conversations</strong>",
-                tech: ["React Native", "AI/ML", "Node.js"],
-                color: "bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800",
-              },
-              {
-                name: "Habit Mentor",
-                description: "<strong>Smart habit tracking</strong> with <strong>AI-driven insights</strong> and coaching",
-                tech: ["React Native", "Analytics", "AI"],
-                color: "bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800",
-              },
-              {
-                name: "Project Manager",
-                description: "<strong>Comprehensive project management tool</strong> with <strong>team collaboration</strong>",
-                tech: ["React", "TypeScript", "Cloud"],
-                color: "bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800",
-              },
-            ].map((project, index) => (
-              <motion.div
-                key={project.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className={`${project.color} border-2 p-6 rounded-xl`}
-              >
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                  {project.name}
-                </h3>
-                <p
-                  className="text-gray-600 dark:text-gray-300 mb-4"
-                  dangerouslySetInnerHTML={{ __html: project.description }}
-                />
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-1 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md text-sm"
+          <div className="mt-16">
+            <div className="text-center mb-8">
+              <p className="text-lg text-gray-600 dark:text-gray-300">
+                Click on any project card below to <strong className="text-gray-900 dark:text-white">visit the live product showcase</strong>
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                {
+                  name: "Gains Chat",
+                  description: "<strong>AI-powered fitness coaching platform</strong> with <strong>personalized conversations</strong>",
+                  tech: ["React Native", "AI/ML", "Node.js"],
+                  color: "bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800",
+                  url: "https://gainschat.prathamsnehi.com",
+                },
+                {
+                  name: "HabitMentor AI",
+                  description: "<strong>Smart habit tracking</strong> with <strong>AI-driven insights</strong> and coaching",
+                  tech: ["React Native", "Analytics", "AI"],
+                  color: "bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800",
+                  url: "https://habitmentor.app",
+                },
+                {
+                  name: "Task/Project Manager",
+                  description: "<strong>Comprehensive project management tool</strong> with <strong>team collaboration</strong>",
+                  tech: ["React", "TypeScript", "Cloud"],
+                  color: "bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800",
+                  url: "https://projectmanager.prathamsnehi.com",
+                },
+              ].map((project, index) => (
+                <motion.div
+                  key={project.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  onClick={() => window.open(project.url, '_blank')}
+                  className={`${project.color} border-2 p-6 rounded-xl cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 hover:border-opacity-80`}
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                      {project.name}
+                    </h3>
+                    <svg
+                      className="w-5 h-5 text-gray-500 dark:text-gray-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
                     >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </div>
+                  <p
+                    className="text-gray-600 dark:text-gray-300 mb-4"
+                    dangerouslySetInnerHTML={{ __html: project.description }}
+                  />
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md text-sm"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>

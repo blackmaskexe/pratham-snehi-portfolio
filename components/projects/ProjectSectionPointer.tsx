@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 
 type Props = {
@@ -13,8 +13,19 @@ export default function ProjectSectionPointer({
   style,
 }: Props) {
   const delaySec = (startDelay || 0) / 1000;
+  const [isMobile, setIsMobile] = useState(false);
 
   const bubbleControls = useAnimation();
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     let mounted = true;
@@ -61,7 +72,9 @@ export default function ProjectSectionPointer({
         animate={bubbleControls}
         className="bg-white/90 dark:bg-neutral-900/80 text-sky-700 dark:text-sky-300 px-3 py-1 rounded-full shadow-lg border border-white/60 dark:border-black/40 text-sm font-semibold"
       >
-        <span>This macOS is interactive!</span>
+        <span>
+          {isMobile ? "This phone is interactive!" : "This display is interactive!"}
+        </span>
       </motion.div>
     </motion.div>
   );

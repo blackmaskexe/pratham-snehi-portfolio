@@ -163,8 +163,8 @@ export function WindowManager({
           return (
             <div
               key={window.id}
-              className={`absolute shadow-2xl overflow-visible window ${
-                isSimulator ? "bg-transparent" : `${windowBgClass} rounded-lg`
+              className={`absolute shadow-2xl window ${
+                isSimulator ? "bg-transparent overflow-visible" : `${windowBgClass} rounded-lg overflow-hidden`
               }`}
               style={{
                 left: window.position.x,

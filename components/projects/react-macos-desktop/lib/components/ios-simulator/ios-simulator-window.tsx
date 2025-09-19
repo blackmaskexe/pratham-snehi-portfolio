@@ -82,9 +82,10 @@ export function IOSSimulatorWindow({
   return (
     <div
       ref={containerRef}
-      className="w-full h-full flex flex-col rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-black z-50 pointer-events-auto"
+      className="w-full h-full flex flex-col rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-black relative pointer-events-auto"
+      style={{ zIndex: 1 }}
     >
-      <div className="flex-1 flex flex-col w-full h-full pointer-events-auto">
+      <div className="flex-1 flex flex-col w-full h-full pointer-events-auto relative">
         {renderAppContent()}
       </div>
     </div>

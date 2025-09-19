@@ -23,9 +23,10 @@ export function useSimulatorSize() {
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
 
-      // Account for menu bar height (24px) and some padding
-      const availableHeight = viewportHeight - 24 - 40; // 40px for padding
-      const availableWidth = viewportWidth - 40; // 40px for padding
+      // For portfolio component - aim for 80% of available space
+      // Account for MacBook frame, menu bar, dock, and padding but allow larger sizing
+      const availableHeight = Math.min(viewportHeight * 0.8, 700); // 80% of viewport or 700px max
+      const availableWidth = Math.min(viewportWidth * 0.6, 500); // 60% of viewport or 500px max
 
       // iPhone 16 Pro aspect ratio: 19.5:9
       const phoneAspectRatio = 19.5 / 9;
@@ -51,8 +52,8 @@ export function useSimulatorSize() {
         phoneHeight = phoneWidth * phoneAspectRatio;
       }
 
-      // Ensure minimum size for usability
-      const minPhoneWidth = 280;
+      // Ensure minimum size for usability - increase minimum for better visibility
+      const minPhoneWidth = 300;
       const minPhoneHeight = minPhoneWidth * phoneAspectRatio;
 
       if (phoneWidth < minPhoneWidth) {

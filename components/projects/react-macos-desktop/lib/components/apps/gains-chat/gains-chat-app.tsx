@@ -186,8 +186,6 @@ export function GainsChatApp({
             <span className="text-xs">Graphs</span>
           </button>
         </nav>
-        {/* Home Indicator */}
-        <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 w-32 h-1 bg-black rounded-full" />
       </footer>
     </div>
   );

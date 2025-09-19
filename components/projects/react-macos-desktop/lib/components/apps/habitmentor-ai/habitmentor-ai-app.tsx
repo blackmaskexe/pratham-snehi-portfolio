@@ -64,11 +64,6 @@ export function HabitMentorAIApp({
           <span className="text-xs mt-1 font-medium">AI Chat</span>
         </button>
       </div>
-
-      {/* Home Indicator: only show on Home tab */}
-      {activeTab === "home" && (
-        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-white/50 rounded-full z-10" />
-      )}
     </div>
   );
 }
